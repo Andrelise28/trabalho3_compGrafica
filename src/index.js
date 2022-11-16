@@ -110,3 +110,7 @@ function onWindowResize() {
 }
 
 window.addEventListener( 'resize', onWindowResize );
+
+// Para fazer a orbita das Luas em Júpiter
+// moon.position.x = -Math.cos(time * orbitSpeed) * orbitRadius;
+// moon.position.z = -Math.sin(time * orbitSpeed) * orbitRadius;
