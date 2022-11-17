@@ -15,7 +15,7 @@ const camera = new THREE.PerspectiveCamera(
     1,
     500
 );
-camera.position.set(50, 10, 0);
+camera.position.set(70, 30, 0);
 camera.lookAt(0, 0, 0);
 
 const scene = new THREE.Scene();
@@ -89,26 +89,27 @@ scene.add(light);
 var clock = new THREE.Clock;
 
 //Moon1
-const moon1Speed = 1.5;
-const moon1Size = 2.5;
-const moon1Orbit = 20;
+const moon1Speed = 1.8;
+const moon1Size = 0.6;
+const moon1Orbit = 5.5;
 
 //Moon2
-const moon2Speed = 0.8;
-const moon2Size = 3.2;
-const moon2Orbit = 30;
+const moon2Speed = -0.7;
+const moon2Size = 1;
+const moon2Orbit = moon1Orbit + 3;
 
 //Moon3
 const moon3Speed = 0.4;
-const moon3Size = 2.8;
-const moon3Orbit = 40;
+const moon3Size = 0.7;
+const moon3Orbit = moon2Orbit + 3;
 
 //Mooon4
-const moon4Speed = 0.2;
-const moon4Size = 3.6;
-const moon4Orbit = 50;
+const moon4Speed = -0.16;
+const moon4Size = 0.7;
+const moon4Orbit = moon3Orbit + 3;
 
-const estrelaGeometry = new THREE.SphereGeometry(240, 64, 64);
+//Milk Way
+const estrelaGeometry = new THREE.SphereGeometry(320, 64, 64);
 const estrelaMaterial = new THREE.MeshBasicMaterial({
     map: textureLoader.load('../img/star_texture.jpg'),
     side: THREE.BackSide
@@ -117,11 +118,10 @@ const estrelaMesh = new THREE.Mesh(estrelaGeometry, estrelaMaterial);
 scene.add(estrelaMesh);
 
 //Jupiter
-const jupiterGeometry = new THREE.SphereGeometry(10, 64, 64);
+const jupiterGeometry = new THREE.SphereGeometry(4, 64, 64);
 const jupiterMaterial = new THREE.MeshStandardMaterial({
     map: textureLoader.load('../img/jupiterTexture.jpg')
 });
-
 const jupiterMesh = new THREE.Mesh(jupiterGeometry, jupiterMaterial);
 scene.add(jupiterMesh);
 
@@ -169,29 +169,28 @@ controls.update();
 
 function animate() {
 
-    // box.rotation.x += 0.01;
-    // box.rotation.y += 0.02;
-    // box.rotation.z += 0.03;
-
     let time = clock.getElapsedTime();
 
     // Orbita da lua 1 em torno de Jupiter
     moon1Mesh.position.x = -Math.cos(time * moon1Speed) * moon1Orbit;
     moon1Mesh.position.z = -Math.sin(time * moon1Speed) * moon1Orbit;
-
+    moon1Mesh.rotation.y += 0.02;
     // Orbita da lua 2 em torno de Jupiter
     moon2Mesh.position.x = -Math.cos(time * moon2Speed) * moon2Orbit;
     moon2Mesh.position.z = -Math.sin(time * moon2Speed) * moon2Orbit;
+    moon2Mesh.rotation.y += 0.02;
 
     // Orbita da lua 3 em torno de Jupiter
     moon3Mesh.position.x = -Math.cos(time * moon3Speed) * moon3Orbit;
     moon3Mesh.position.z = -Math.sin(time * moon3Speed) * moon3Orbit;
+    moon3Mesh.rotation.y += 0.02;
 
     // Orbita da lua 4 em torno de Jupiter
     moon4Mesh.position.x = -Math.cos(time * moon4Speed) * moon4Orbit;
     moon4Mesh.position.z = -Math.sin(time * moon4Speed) * moon4Orbit;
+    moon4Mesh.rotation.y += 0.02;
 
-    jupiterMesh.rotation.y += 0.005;
+    jupiterMesh.rotation.y += 0.01;
 
     requestAnimationFrame(animate);
 
