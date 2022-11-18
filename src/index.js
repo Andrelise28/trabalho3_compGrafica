@@ -39,7 +39,7 @@ light.shadow.camera.near = 0.5; // default
 light.shadow.camera.far = 500; // default
 
 const distanceSpotlight = 45;
-const heightSpotlight = 8;
+const heightSpotlight = 12;
 const intesitySpotlight = 0.5;
 
 //Create a SpotLight and turn on shadows for the light
@@ -59,7 +59,7 @@ scene.add( spotlight );
 
 //Create a SpotLight and turn on shadows for the light
 const spotlight2 = new THREE.SpotLight( 0xffffff, intesitySpotlight);
-spotlight2.position.set( 0, heightSpotlight, distanceSpotlight );
+spotlight2.position.set( 0, heightSpotlight, distanceSpotlight + 5 );
 spotlight2.castShadow = true; // default false
 
 //Set up shadow properties for the light
@@ -85,18 +85,18 @@ spotlight3.shadow.camera.far = 200;
 spotlight3.shadow.camera.fov = 20;
 scene.add( spotlight3 );
 
-// //Create a helper for the shadow camera (optional)
-// const helperSpotLight = new THREE.CameraHelper( spotlight.shadow.camera );
-// scene.add( helperSpotLight );
+//Create a helper for the shadow camera (optional)
+const helperSpotLight = new THREE.CameraHelper( spotlight.shadow.camera );
+scene.add( helperSpotLight );
 
-// const helperSpotLight2 = new THREE.CameraHelper( spotlight2.shadow.camera );
-// scene.add( helperSpotLight2 );
+const helperSpotLight2 = new THREE.CameraHelper( spotlight2.shadow.camera );
+scene.add( helperSpotLight2 );
 
-// const helperSpotLight3 = new THREE.CameraHelper( spotlight3.shadow.camera );
-// scene.add( helperSpotLight3 );
+const helperSpotLight3 = new THREE.CameraHelper( spotlight3.shadow.camera );
+scene.add( helperSpotLight3 );
 
-// const helper = new THREE.CameraHelper( light.shadow.camera );
-// scene.add( helper );
+const helper = new THREE.CameraHelper( light.shadow.camera );
+scene.add( helper );
 
 //Create a ground that receives shadows (but does not cast them)
 const groundGeometry = new THREE.BoxGeometry( 150, 0.5, 150 );
