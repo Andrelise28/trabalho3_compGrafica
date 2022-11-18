@@ -15,7 +15,7 @@ const camera = new THREE.PerspectiveCamera(
     1,
     1000
 );
-camera.position.set(0, 40, 80);
+camera.position.set(0, 40, 60);
 camera.lookAt(0, 0, 0);
 
 const scene = new THREE.Scene();
@@ -27,9 +27,8 @@ const textureLoader = new THREE.TextureLoader();
 // scene.add(light);
 
 //Create a DirectionalLight and turn on shadows for the light
-const light = new THREE.PointLight( 0xffffff, 0.5, 40 );
-light.position.set( 0, 25, 0 ); //default; light shining from top
-// light.rotateY(-90);
+const light = new THREE.PointLight( 0xffffff, 1, 100 );
+light.position.set( 0, 35, 0 ); //default; light shining from top
 light.castShadow = true; // default false
 scene.add( light );
 
@@ -39,29 +38,13 @@ light.shadow.mapSize.height = 512; // default
 light.shadow.camera.near = 0.5; // default
 light.shadow.camera.far = 500; // default
 
-//Create a helper for the shadow camera (optional)
-const helper = new THREE.CameraHelper( light.shadow.camera );
-scene.add( helper );
-
-// //Create a box that cast shadows (but does not receive them)
-// const boxGeometry = new THREE.BoxGeometry( 5, 5, 5 );
-// const boxMaterial = new THREE.MeshStandardMaterial({
-//     color: 0x049ef4,
-//     emissive: 0x000000,
-//     roughness: 0,
-//     metalness: 0.5
-// });
-// const box = new THREE.Mesh( boxGeometry, boxMaterial );
-// box.castShadow = true; //default is false
-// box.receiveShadow = false; //default
-// scene.add( box );
-
-const distanceSpotlight = 35;
-const heightSpotlight = -8;
+const distanceSpotlight = 45;
+const heightSpotlight = 8;
+const intesitySpotlight = 0.5;
 
 //Create a SpotLight and turn on shadows for the light
-const spotlight = new THREE.SpotLight( 0xffffff, 0.5);
-spotlight.position.set( -20, heightSpotlight, distanceSpotlight - 5 );
+const spotlight = new THREE.SpotLight( 0xffffff, intesitySpotlight);
+spotlight.position.set( -20, heightSpotlight, distanceSpotlight );
 spotlight.castShadow = true; // default false
 
 //Set up shadow properties for the light
@@ -69,13 +52,13 @@ spotlight.shadow.mapSize.width = 1024;
 spotlight.shadow.mapSize.height = 1024;
 
 spotlight.shadow.camera.near = 0.5;
-spotlight.shadow.camera.far = 60;
+spotlight.shadow.camera.far = 200;
 spotlight.shadow.camera.fov = 20;
 
 scene.add( spotlight );
 
 //Create a SpotLight and turn on shadows for the light
-const spotlight2 = new THREE.SpotLight( 0xffffff, 0.5);
+const spotlight2 = new THREE.SpotLight( 0xffffff, intesitySpotlight);
 spotlight2.position.set( 0, heightSpotlight, distanceSpotlight );
 spotlight2.castShadow = true; // default false
 
@@ -84,13 +67,13 @@ spotlight2.shadow.mapSize.width = 1024;
 spotlight2.shadow.mapSize.height = 1024;
 
 spotlight2.shadow.camera.near = 0.5;
-spotlight2.shadow.camera.far = 60;
+spotlight2.shadow.camera.far = 200;
 spotlight2.shadow.camera.fov = 20;
 scene.add( spotlight2 );
 
 //Create a SpotLight and turn on shadows for the light
-const spotlight3 = new THREE.SpotLight( 0xffffff , 0.5);
-spotlight3.position.set( 20, heightSpotlight, distanceSpotlight - 5 );
+const spotlight3 = new THREE.SpotLight( 0xffffff , intesitySpotlight);
+spotlight3.position.set( 20, heightSpotlight, distanceSpotlight );
 spotlight3.castShadow = true; // default false
 
 //Set up shadow properties for the light
@@ -98,7 +81,7 @@ spotlight3.shadow.mapSize.width = 1024;
 spotlight3.shadow.mapSize.height = 1024;
 
 spotlight3.shadow.camera.near = 0.5;
-spotlight3.shadow.camera.far = 60;
+spotlight3.shadow.camera.far = 200;
 spotlight3.shadow.camera.fov = 20;
 scene.add( spotlight3 );
 
@@ -106,15 +89,17 @@ scene.add( spotlight3 );
 // const helperSpotLight = new THREE.CameraHelper( spotlight.shadow.camera );
 // scene.add( helperSpotLight );
 
-// //Create a helper for the shadow camera (optional)
 // const helperSpotLight2 = new THREE.CameraHelper( spotlight2.shadow.camera );
 // scene.add( helperSpotLight2 );
 
 // const helperSpotLight3 = new THREE.CameraHelper( spotlight3.shadow.camera );
 // scene.add( helperSpotLight3 );
 
+// const helper = new THREE.CameraHelper( light.shadow.camera );
+// scene.add( helper );
+
 //Create a ground that receives shadows (but does not cast them)
-const groundGeometry = new THREE.BoxGeometry( 35, 5, 35 );
+const groundGeometry = new THREE.BoxGeometry( 150, 0.5, 150 );
 const groundMaterial = new THREE.MeshStandardMaterial({
     color: 0x049ef4,
     emissive: 0x000000,
@@ -122,10 +107,24 @@ const groundMaterial = new THREE.MeshStandardMaterial({
     metalness: 0.5
 });
 const ground = new THREE.Mesh( groundGeometry, groundMaterial );
-ground.position.y = -10;
-ground.castShadow = true; //default is false
+ground.position.y = -12;
+ground.castShadow = false; //default is false
 ground.receiveShadow = true; //default
 scene.add( ground );
+
+//Create platform
+const platformGeometry = new THREE.BoxGeometry(50, 6, 50);
+const platformMaterial = new THREE.MeshStandardMaterial({
+    map: textureLoader.load('../img/textura-palco.jpg'),
+    emissive: 0x000000,
+    roughness: 0,
+    metalness: 0.5
+});
+const platformMesh = new THREE.Mesh(platformGeometry, platformMaterial);
+platformMesh.position.y = -9;
+platformMesh.castShadow = true;
+platformMesh.receiveShadow = true;
+scene.add(platformMesh);
 
 var clock = new THREE.Clock;
 
