@@ -82,10 +82,21 @@ spotlight3.shadow.camera.fov = 20;
 scene.add( spotlight3 );
 //-----------------------------------------------------------------------
 
+//Textures
+const groundTexture = '../img/white_wood_texture.jpg';
+const platformTexture = '../img/platform_texture.jpg';
+const milkWayTexture = '../img/star_texture.jpg';
+const jupiterTexture = '../img/jupiter_texture.jpg';
+const moon1Texture = '../img/moon1_texture.jpg';
+const moon2Texture = '../img/moon2_texture.jpg';
+const moon3Texture = '../img/moon3_texture.jpg';
+const moon4Texture = '../img/moon4_texture.jpg'; 
+//-----------------------------------------------------------------------
+
 //Create a ground that receives shadows
-const groundGeometry = new THREE.BoxGeometry( 150, 0.5, 150 );
+const groundGeometry = new THREE.CylinderGeometry(100,100,0.5,64);
 const groundMaterial = new THREE.MeshStandardMaterial({
-    color: 0x049ef4,
+    map: textureLoader.load(groundTexture),
     emissive: 0x000000,
     roughness: 0,
     metalness: 0.5
@@ -97,18 +108,8 @@ ground.receiveShadow = true; //default
 scene.add( ground );
 //-----------------------------------------------------------------------
 
-//Textures
-const platformTexture = '../img/platform_texture.jpg';
-const milkWayTexture = '../img/star_texture.jpg';
-const jupiterTexture = '../img/jupiter_texture.jpg';
-const moon1Texture = '../img/moon1_texture.jpg';
-const moon2Texture = '../img/moon2_texture.jpg';
-const moon3Texture = '../img/moon3_texture.jpg';
-const moon4Texture = '../img/moon4_texture.jpg'; 
-//-----------------------------------------------------------------------
-
 //Create platform
-const platformGeometry = new THREE.BoxGeometry(50, 6, 50);
+const platformGeometry = new THREE.CylinderGeometry(20,25,5.5,64);
 const platformMaterial = new THREE.MeshStandardMaterial({
     map: textureLoader.load(platformTexture),
     emissive: 0x000000,
@@ -216,17 +217,17 @@ scene.add(moon4Mesh);
 //-----------------------------------------------------------------------
 
 //helpers
-const helperSpotLight = new THREE.CameraHelper( spotlight.shadow.camera );
-scene.add( helperSpotLight );
+// const helperSpotLight = new THREE.CameraHelper( spotlight.shadow.camera );
+// scene.add( helperSpotLight );
 
-const helperSpotLight2 = new THREE.CameraHelper( spotlight2.shadow.camera );
-scene.add( helperSpotLight2 );
+// const helperSpotLight2 = new THREE.CameraHelper( spotlight2.shadow.camera );
+// scene.add( helperSpotLight2 );
 
-const helperSpotLight3 = new THREE.CameraHelper( spotlight3.shadow.camera );
-scene.add( helperSpotLight3 );
+// const helperSpotLight3 = new THREE.CameraHelper( spotlight3.shadow.camera );
+// scene.add( helperSpotLight3 );
 
-const helper = new THREE.CameraHelper( light.shadow.camera );
-scene.add( helper );
+// const helper = new THREE.CameraHelper( light.shadow.camera );
+// scene.add( helper );
 //-----------------------------------------------------------------------
 
 // OrbitControls
