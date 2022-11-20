@@ -4,7 +4,7 @@ Trabalho A1/3 composto pelos integrantes Andrelise e Jurandi.
 ## Setup
 Download [Node.js](https://nodejs.org/).
 
-Run this followed commands:
+Execute os seguintes comandos:
 
 ``` bash
 # Instale as dependências com o seguinte comando:
