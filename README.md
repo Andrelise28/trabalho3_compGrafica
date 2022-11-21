@@ -2,7 +2,7 @@
 Trabalho A1/3 composto pelos integrantes Andrelise e Jurandi.
 
 ## Setup
-Download [Node.js](https://nodejs.org/).
+Baixe [Node.js](https://nodejs.org/).
 
 Execute os seguintes comandos:
 
