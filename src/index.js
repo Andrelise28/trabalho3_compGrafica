@@ -23,7 +23,7 @@ const clock = new THREE.Clock;
 //-----------------------------------------------------------------------
 
 //Pointlight
-const light = new THREE.PointLight( 0xffffff, 1, 100 );
+const light = new THREE.PointLight( 0xffffff, 0.5, 100 );
 light.position.set( 0, 35, 0 ); //default; light shining from top
 light.castShadow = true; // default false
 scene.add( light );
@@ -36,13 +36,13 @@ light.shadow.camera.far = 500; // default
 //-----------------------------------------------------------------------
 
 //Spotlight parameters
-const distanceSpotlight = 45;
-const heightSpotlight = 12;
+const distanceSpotlight = 35;
+const heightSpotlight = 35;
 const intesitySpotlight = 0.5;
 
 //Spotlight 1
 const spotlight = new THREE.SpotLight( 0xffffff, intesitySpotlight);
-spotlight.position.set( -20, heightSpotlight, distanceSpotlight );
+spotlight.position.set( -35, heightSpotlight, distanceSpotlight );
 spotlight.castShadow = true; // default false
 
 //Set up shadow properties for the light
@@ -70,7 +70,7 @@ scene.add( spotlight2 );
 
 //Spotlight 3
 const spotlight3 = new THREE.SpotLight( 0xffffff , intesitySpotlight);
-spotlight3.position.set( 20, heightSpotlight, distanceSpotlight );
+spotlight3.position.set( 35, heightSpotlight, distanceSpotlight );
 spotlight3.castShadow = true; // default false
 
 //Set up shadow properties for the light
@@ -84,7 +84,7 @@ scene.add( spotlight3 );
 
 //Textures
 const groundTexture = '../img/white_wood_texture.jpg';
-const platformTexture = '../img/platform_texture.jpg';
+const platformTexture = '../img/gray_wood_texture.jpg';
 const milkWayTexture = '../img/star_texture.jpg';
 const jupiterTexture = '../img/jupiter_texture.jpg';
 const moon1Texture = '../img/moon1_texture.jpg';
@@ -217,17 +217,17 @@ scene.add(moon4Mesh);
 //-----------------------------------------------------------------------
 
 //helpers
-// const helperSpotLight = new THREE.CameraHelper( spotlight.shadow.camera );
-// scene.add( helperSpotLight );
+const helperSpotLight = new THREE.CameraHelper( spotlight.shadow.camera );
+scene.add( helperSpotLight );
 
-// const helperSpotLight2 = new THREE.CameraHelper( spotlight2.shadow.camera );
-// scene.add( helperSpotLight2 );
+const helperSpotLight2 = new THREE.CameraHelper( spotlight2.shadow.camera );
+scene.add( helperSpotLight2 );
 
-// const helperSpotLight3 = new THREE.CameraHelper( spotlight3.shadow.camera );
-// scene.add( helperSpotLight3 );
+const helperSpotLight3 = new THREE.CameraHelper( spotlight3.shadow.camera );
+scene.add( helperSpotLight3 );
 
-// const helper = new THREE.CameraHelper( light.shadow.camera );
-// scene.add( helper );
+const helper = new THREE.CameraHelper( light.shadow.camera );
+scene.add( helper );
 //-----------------------------------------------------------------------
 
 // OrbitControls
