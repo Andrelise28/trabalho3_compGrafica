@@ -32,13 +32,14 @@ scene.add( light );
 light.shadow.mapSize.width = 512; // default
 light.shadow.mapSize.height = 512; // default
 light.shadow.camera.near = 0.5; // default
-light.shadow.camera.far = 500; // default
+light.shadow.camera.far = 50; // default
 //-----------------------------------------------------------------------
 
 //Spotlight parameters
 const distanceSpotlight = 35;
 const heightSpotlight = 35;
 const intesitySpotlight = 0.5;
+const cameraFarSpotlight = 120;
 
 //Spotlight 1
 const spotlight = new THREE.SpotLight( 0xffffff, intesitySpotlight);
@@ -49,7 +50,7 @@ spotlight.castShadow = true; // default false
 spotlight.shadow.mapSize.width = 1024;
 spotlight.shadow.mapSize.height = 1024;
 spotlight.shadow.camera.near = 0.5;
-spotlight.shadow.camera.far = 200;
+spotlight.shadow.camera.far = cameraFarSpotlight;
 spotlight.shadow.camera.fov = 20;
 scene.add( spotlight );
 //-----------------------------------------------------------------------
@@ -63,7 +64,7 @@ spotlight2.castShadow = true; // default false
 spotlight2.shadow.mapSize.width = 1024;
 spotlight2.shadow.mapSize.height = 1024;
 spotlight2.shadow.camera.near = 0.5;
-spotlight2.shadow.camera.far = 200;
+spotlight2.shadow.camera.far = cameraFarSpotlight;
 spotlight2.shadow.camera.fov = 20;
 scene.add( spotlight2 );
 //-----------------------------------------------------------------------
@@ -77,7 +78,7 @@ spotlight3.castShadow = true; // default false
 spotlight3.shadow.mapSize.width = 1024;
 spotlight3.shadow.mapSize.height = 1024;
 spotlight3.shadow.camera.near = 0.5;
-spotlight3.shadow.camera.far = 200;
+spotlight3.shadow.camera.far = cameraFarSpotlight;
 spotlight3.shadow.camera.fov = 20;
 scene.add( spotlight3 );
 //-----------------------------------------------------------------------
