@@ -1,5 +1,5 @@
 # threjs-luz-e-sombra-trabalho-a1-3
-Trabalho A1/3 composto pelos integrantes Andrelise e Jurandi.
+Trabalho A1/3 composto pelos integrantes **Andrelise** e **Jurandi**.
 
 ## Setup
 Baixe [Node.js](https://nodejs.org/).
